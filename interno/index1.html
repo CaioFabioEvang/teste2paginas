@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <title>Campanhas</title>
+  <style>
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+</head>
+<body>
+<div id="conteiner__campanhas">
+  <header>
+    <div id="conteiner__text">
+      <h1 style="color: #ffffff;">CRM - Campanhas</h1>
+      <h1 style="background-color: #2a3db4; padding: 3px; color: #ffffff; border-radius: 5px;">Grupo Amigão</h1>
+    </div>  
+    <label for="campanhaSelect" style="font-weight: bold; color: #ffffff; padding: 3px;">Selecione a campanha:</label>
+    <select id="campanhaSelect" onchange="mostrarDados()">
+      <option id="optionCampaign" style="font-weight: bold;"> -- Escolha Campanha -- </option>
+      <option id="naoUsar">Campanhas Semana - 29/01 a 04/02</option>
+      <option id="alter__text" value="campanha1">E-mail TQV 30012024</option>
+      <option value="campanha2">68750 - Email - Volta as Aulas - Dia da Saudade Publico 1 30012024</option>
+      <option value="campanha3">68751 - Email - Volta as Aulas - Dia da Saudade Publico 2 30012024</option>
+      <option value="campanha4">68821 - Custom Audience - TRADE MKT Hoegaarden SP 01022024</option>
+      <option value="campanha5">68822 - Custom Audience - TRADE MKT Agua Tonica PR MS 01022024</option>
+      <option value="campanha6">68823 - Custom Audience - TRADE MKT Agua Tonica SP 01022024</option>
+      <option value="campanha7">68783 - Email - Encarte Carnaval Churrasco com a Galera Publico 1 02022024</option>
+      <option value="campanha8">68784 - Email - Encarte Carnaval Churrasco com a Galera Publico 2 02022024</option>
+      <option value="campanha9">68785 - SMS - Encarte Carnaval Churrasco com a Galera Publico 1 PR 02022024</option>
+      <option value="campanha10">68786 - SMS - Encarte Carnaval Churrasco com a Galera Publico 1 MS 02022024</option>
+      <option value="campanha11">68787 - SMS - Encarte Carnaval Churrasco com a Galera Publico 1 SP 02022024</option>
+      <option value="campanha12">68788 - SMS - Encarte Carnaval Churrasco com a Galera Publico 2 PR 02022024</option>
+      <option value="campanha13">68789 - SMS - Encarte Carnaval Churrasco com a Galera Publico 2 SP 02022024</option>
+      <option value="campanha14">68790 - SMS - Encarte Carnaval Churrasco com a Galera Publico 2 MS 02022024</option>
+      <option value="campanha15">68791 - SMS - Oferta Relampago Bebida Lactea e Biscoito 01022024</option>
+      <option value="campanha16">68792 - Email - Festival Bebidas Hidrate se na Folia Publico 1 02022024</option>
+      <option value="campanha17">68793 - Email - Festival Bebidas Hidrate se na Folia Publico 2 02022024</option>
+      <option value="campanha19">68794 - SMS - Festival Bebidas Hidrate se na Folia Publico 1 PR 02022024</option>
+      <option value="campanha18">68795 - SMS - Festival Bebidas Hidrate se na Folia Publico 1 MS 02022024</option>
+      <option value="campanha20">68796 - SMS - Festival Bebidas Hidrate se na Folia Publico 1 SP 02022024</option>
+      <option value="campanha21">68798 - SMS - Festival Bebidas Hidrate se na Folia Publico 2 PR 02022024</option>
+      <option value="campanha22">68799 - SMS - Festival Bebidas Hidrate se na Folia Publico 2 SP 02022024</option>
+      <option value="campanha23">68800 - SMS - Festival Bebidas Hidrate se na Folia Publico 2 MS 02022024</option>
+      <option value="campanha24">68832 - Email - Sabadao Amigao Publico 1 03022024</option>
+      <option value="campanha25">68833 - Email - Sabadao Amigao Publico 2 03022024</option>
+      <option value="campanha26">68834 - SMS - Sabadao Amigao Publico 1 PR 03022024</option>
+      <option value="campanha27">68835 - SMS - Sabadao Amigao Publico 1 SP 03022024</option>
+      <option value="campanha28">68839 - SMS - Sabadao Amigao Publico 2 PR 03022024</option>
+      <option value="campanha29">68840 - SMS - Sabadao Amigao Publico 2 SP 03022024</option>
+      <option value="campanha30">68841 - SMS - Sabadao Amigao Publico 2 MS 03022024</option>
+      <option id="naoUsar">Campanhas Semana - 05/02 a 11/02</option>
+      <option value="campanha31">68844 - Email - TRADE MKT AMBEV - CORONA LONG NECK PR MS 03022024</option>
+      <option value="campanha32">68845 - Email - TRADE MKT AMBEV - CORONA LONG NECK SP 03022024</option>    
+      <option value="campanha33">68853 - Email - Abastecimento Exclusivo Vitrine 1 Publico 1 05022024</option>
+      <option value="campanha34">68854 - Email - Abastecimento Exclusivo Vitrine 1 Publico 2 05022024</option>
+      <option value="campanha35">68855 - SMS - Abastecimento Exclusivo Vitrine 1 Publico 1 05022024</option>
+      <option value="campanha36">68856 - SMS - Abastecimento Exclusivo Vitrine 1 Publico 2 05022024</option>
+      <option value="campanha37">68867 - Email - TRADE MKT AMBEV - BDM 350ML PR MS 07022024</option>
+      <option value="campanha38">68868 - Email - TRADE MKT AMBEV - BDM 350ML SP 07022024</option>
+      <option value="campanha39">68869 - Email - TRADE MKT AMBEV - BRAHMA CHOPP 350ML PR MS 07022024</option>
+      <option value="campanha40">68870 - Email - TRADE MKT AMBEV - BRAHMA CHOPP 350ML SP 07022024</option>
+      <option value="campanha41">68871 - Email - TRADE MKT AMBEV - BEATS TROPICAL PR MS 07022024</option>
+      <option value="campanha42">68872 - Email - TRADE MKT AMBEV - BEATS TROPICAL SP 07022024</option>
+      <option value="campanha43">68858 - E-mail TQV 06022024</option>
+      <option value="campanha44">68894 - SMS - Campanha Ofertas Limpeza - H&B Disp 2 10022024</option>
+      <option value="campanha45">68893 - SMS - Campanha Ofertas Limpeza - H&B Disp 1 09022024</option>
+      <option value="campanha46">68895 - Push - Campanha Ofertas Limpeza - H&B Disp 1 09022024</option>
+      <option value="campanha47">68896 - Push - Campanha Ofertas Limpeza - H&B Disp 2 10022024</option>
+      <option value="campanha48">68897 - Push - Campanha Ofertas Limpeza - H&B Disp 3 11022024</option>
+      <option value="campanha49">68883 - Email - Jornada Inativos Primeira Semana 08022024</option>
+      <option value="campanha50">68884 - Push - Jornada Inativos Primeira Semana 08022024</option>
+      <option value="campanha51">68891 - Custom Audience - Jornada Inativos Primeira Semana 09022024</option>
+      <option id="naoUsar">Campanhas Semana - 12/02 a 18/02</option>
+      <option value="campanha52">68904 - SMS - Jornada Inativos Primeira Semana 12022024</option>
+      <option value="campanha53">68928 - Email - Jornada Inativos Segunda Semana 15012024</option>
+      <option value="campanha54">68929 - Push - Jornada Inativos Segunda Semana 15012024</option>
+      <option value="campanha55">68917 - Email - Reposicao Vitrine 1 Publico 1 15022024</option>
+      <option value="campanha56">68918 - Email - Reposicao Vitrine 1 Publico 2 15022024</option>
+      <option value="campanha57">68921 - Push - Reposicao Vitrine 1 Publico 1 15022024</option>
+      <option value="campanha58">68922 - Push - Reposicao Vitrine 1 Publico 2 15022024</option>
+      <option value="campanha59">68919 - SMS - Reposicao Vitrine 1 Publico 1 15022024</option>
+      <option value="campanha60">68920 - SMS - Reposicao Vitrine 1 Publico 2 15022024</option>
+      <option value="campanha61">68976 - Email - TRADE MKT AMBEV - BUDWEISER 350ML PR MS 16022024</option>
+      <option value="campanha62">68977 - Email - TRADE MKT AMBEV - BUDWEISER 350ML SP 16022024</option>
+      <option value="campanha63">68970 - Email - TRADE MKT AMBEV - ORIGINAL 350ML PR MS 160220224</option>
+      <option value="campanha64">68971 - Email - TRADE MKT AMBEV - ORIGINAL 473ML SP 160220224</option>
+      <option value="campanha65">68972 - Email - TRADE MKT AMBEV - SPATEN 350ML PR MS 16022024</option>
+      <option value="campanha66">68973 - Email - TRADE MKT AMBEV - SPATEN 350ML SP 16022024</option>
+      <option value="campanha67">68969 - Custom Audience - Jornada Inativos Segunda Semana 16012024</option>
+      <option value="campanha68">68953 - Custom Audience - TRADE MKT AMBEV - FAMILIA BEATS 16022024</option>
+      <option value="campanha69">68951 - Custom Audience - TRADE MKT AMBEV - FAMILIA GUARANA 16022024</option>
+      <option value="campanha70">68962 - Custom Audience - TRADE MKT DIA DO GATO - MARS 16022024</option>
+      <option value="campanha71">68963 - Custom Audience - TRADE MKT DIA DO GATO - SC JOHNSON 16022024</option>
+      <option value="campanha72">68960 - Custom Audience - TRADE MKT ESTRELLA GALICIA 16022024</option>
+      <option value="campanha73">68956 - Custom Audience - TRADE MKT MONSTER 16022024</option>
+      <option value="campanha74">68954 - Custom Audience - TRADE MKT NESTLE CHOCOLATES 16022024</option>
+      <option value="campanha75">68955 - Custom Audience - TRADE MKT NESTLE MAGGI 16022024</option>
+      <option value="campanha76">68952 - Custom Audience - TRADE MKT PEPSICO VERAO 16022024</option>
+      <option value="campanha77">68961 - Custom Audience - TRADE MKT SCHWEPPES 16022024</option>
+      <option value="campanha78">68959 - Custom Audience - TRADE MKT THEREZOPOLIS 16022024</option>
+
+
+      <!-- Adicione mais opções conforme necessário -->
+    </select>
+  </header>
+</div>  
+<main>  
+  <div id="conteiner">
+    <div id="conteiner__info">
+      <div id="campanhaNome">
+        <h2></h2>
+      </div>
+
+      <div id="campanhaFiltro">
+        <p></p>
+      </div>
+
+      <div id="campanhaPublicoAbordado">
+        <p></p>
+      </div>
+
+      <div id="campanhaPublicoGrupoControle">
+        <p></p>
+      </div>
+
+      <div id="campanhaMensuracao">
+        <p></p>
+      </div>
+      
+    </div>
+
+    <div id="conteiner__produtos">
+      <div id="campanhaProdutosMensuracao">
+        <p></p>
+      </div>  
+    </div>  
+</div>
+</main>
+
+<div>
+  <button id="downloadButton" onclick="exportarParaExcel()">Download Excel</button>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
